@@ -4,6 +4,10 @@ import com.defenox.graphlib.common.Edge;
 
 import java.util.*;
 
+/**
+ *
+ * @param <T>
+ */
 public class Dijkstra<T> implements Search<T> {
     private Set<T> settledNodes;
     private Set<T> unSettledNodes;
@@ -11,6 +15,13 @@ public class Dijkstra<T> implements Search<T> {
     private Map<T, Double> distance;
     private Map<T, List<Edge<T>>> adjacencyList;
 
+    /**
+     *
+     * @param adjacencyList
+     * @param startVertex
+     * @param endVertex
+     * @return
+     */
     @Override
     public List<Edge<T>> getPath(Map<T, List<Edge<T>>> adjacencyList, T startVertex, T endVertex) {
         this.adjacencyList = adjacencyList;

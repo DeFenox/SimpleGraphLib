@@ -10,20 +10,35 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ *
+ * @param <T>
+ */
 public abstract class AbstractGraph<T> implements Graph<T> {
 
     protected Map<T, List<Edge<T>>> adjacencyList = new ConcurrentHashMap<>();
     protected final Search<T> search;
     protected final ReentrantLock lock = new ReentrantLock();
 
+    /**
+     *
+     */
     public AbstractGraph() {
         this.search = new Dijkstra<>();
     }
 
+    /**
+     *
+     * @param search
+     */
     public AbstractGraph(Search<T> search) {
         this.search = search;
     }
 
+    /**
+     *
+     * @param vertex
+     */
     @Override
     public void addVertex(T vertex) {
         lock.lock();
@@ -31,6 +46,12 @@ public abstract class AbstractGraph<T> implements Graph<T> {
         lock.unlock();
     }
 
+    /**
+     *
+     * @param firstVertex
+     * @param lastVertex
+     * @return
+     */
     @Override
     public List<Edge<T>> getPath(T firstVertex, T lastVertex) {
         lock.lock();

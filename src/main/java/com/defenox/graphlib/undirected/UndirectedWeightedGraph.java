@@ -7,16 +7,33 @@ import com.defenox.graphlib.search.Search;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @param <T>
+ */
 public class UndirectedWeightedGraph<T> extends AbstractGraph<T> implements WeightedGraph<T> {
 
+    /**
+     *
+     */
     public UndirectedWeightedGraph() {
         super();
     }
 
+    /**
+     *
+     * @param search
+     */
     public UndirectedWeightedGraph(Search<T> search) {
         super(search);
     }
 
+    /**
+     *
+     * @param firstVertex
+     * @param secondVertex
+     * @param weight
+     */
     @Override
     public void addEdge(T firstVertex, T secondVertex, Double weight) {
         lock.lock();
