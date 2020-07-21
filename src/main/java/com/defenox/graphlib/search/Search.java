@@ -15,7 +15,6 @@ import java.util.Map;
 public interface Search<T> {
     /**
      *
-     *
      * @param adjacencyList - adjacency  list.
      * @param fromVertex - start vertex.
      * @param toVertex - end vertex.

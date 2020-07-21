@@ -5,8 +5,9 @@ import com.defenox.graphlib.common.Edge;
 import java.util.*;
 
 /**
- *
- * @param <T>
+ * Implement Search interface.
+ * @see com.defenox.graphlib.search.Search
+ * @param <T> type of vertex.
  */
 public class Dijkstra<T> implements Search<T> {
     private Set<T> settledNodes;
@@ -17,15 +18,18 @@ public class Dijkstra<T> implements Search<T> {
 
     /**
      *
-     * @param adjacencyList
-     * @param startVertex
-     * @param endVertex
-     * @return
+     * @param adjacencyList - adjacency  list.
+     * @param fromVertex - start vertex.
+     * @param toVertex - end vertex.
+     * @return - List of edge. If a path is not reachable,
+     *  return empty list.
+     *
+     * @throws IllegalArgumentException if weight of edge is negative.
      */
     @Override
-    public List<Edge<T>> getPath(Map<T, List<Edge<T>>> adjacencyList, T startVertex, T endVertex) {
+    public List<Edge<T>> getPath(Map<T, List<Edge<T>>> adjacencyList, T fromVertex, T toVertex) {
         this.adjacencyList = adjacencyList;
-        return calculate(startVertex, endVertex);
+        return calculate(fromVertex, toVertex);
     }
 
 
@@ -101,13 +105,13 @@ public class Dijkstra<T> implements Search<T> {
                 return edge.getWeight();
             }
         }
-        return null;
+        throw new RuntimeException();
     }
+
     /*
      * This method returns the path from the source to the selected target and
-     * NULL if no path exists
+     * Empty List if no path exists
      */
-
     private List<Edge<T>> getPath(T target) {
         List<Edge<T>> path = new LinkedList<>();
         T step = target;
@@ -115,7 +119,6 @@ public class Dijkstra<T> implements Search<T> {
         if (predecessors.get(step) == null) {
             return path;
         }
-        //path.add(step);
         while (predecessors.get(step) != null) {
             T endVertex = step;
             step = predecessors.get(step);
