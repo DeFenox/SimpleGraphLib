@@ -18,10 +18,10 @@ public class Dijkstra<T> implements Search<T> {
 
     /**
      *
-     * @param adjacencyList - adjacency  list.
-     * @param fromVertex - start vertex.
-     * @param toVertex - end vertex.
-     * @return - List of edge. If a path is not reachable,
+     * @param adjacencyList adjacency  list.
+     * @param fromVertex start vertex.
+     * @param toVertex end vertex.
+     * @return List of edge. If a path is not reachable,
      *  return empty list.
      *
      * @throws IllegalArgumentException if weight of edge is negative.

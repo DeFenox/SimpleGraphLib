@@ -11,8 +11,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * Abstract class implements Graph interface and contains implementation of
+ * Search interface. A field Search initialize by Dijkstra object by default.
  *
- * @param <T>
+ * @see Search interface.
+ *
+ * @param <T> tupe of vertices.
  */
 public abstract class AbstractGraph<T> implements Graph<T> {
 
@@ -21,23 +25,25 @@ public abstract class AbstractGraph<T> implements Graph<T> {
     protected final ReentrantLock lock = new ReentrantLock();
 
     /**
-     *
+     * Constructor init search by Dijkstra.
      */
     public AbstractGraph() {
         this.search = new Dijkstra<>();
     }
 
     /**
+     * Constructor with param.
+     * @param search implementation of Search.
      *
-     * @param search
+     * @see Search
      */
     public AbstractGraph(Search<T> search) {
         this.search = search;
     }
 
     /**
-     *
-     * @param vertex
+     * Add a vertex.
+     * @param vertex type of vertex.
      */
     @Override
     public void addVertex(T vertex) {
@@ -47,16 +53,19 @@ public abstract class AbstractGraph<T> implements Graph<T> {
     }
 
     /**
+     * Return path between two vertices.
      *
-     * @param firstVertex
-     * @param lastVertex
-     * @return
+     * @param fromVertex start vertex.
+     * @param toVertex end vertex.
+     *
+     * @return List of edge. If a path is not reachable,
+     * return empty list.
      */
     @Override
-    public List<Edge<T>> getPath(T firstVertex, T lastVertex) {
+    public List<Edge<T>> getPath(T fromVertex, T toVertex) {
         lock.lock();
-        validateVertices(firstVertex, lastVertex);
-        List<Edge<T>> path = search.getPath(adjacencyList, firstVertex, lastVertex);
+        validateVertices(fromVertex, toVertex);
+        List<Edge<T>> path = search.getPath(adjacencyList, fromVertex, toVertex);
         lock.unlock();
         return path;
     }

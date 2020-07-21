@@ -14,11 +14,12 @@ import java.util.Map;
  */
 public interface Search<T> {
     /**
+     * Return path between two vertices.
      *
-     * @param adjacencyList - adjacency  list.
-     * @param fromVertex - start vertex.
-     * @param toVertex - end vertex.
-     * @return - List of edge. If a path is not reachable,
+     * @param adjacencyList adjacency  list.
+     * @param fromVertex start vertex.
+     * @param toVertex end vertex.
+     * @return List of edge. If a path is not reachable,
      *  return empty list.
      */
     List<Edge<T>> getPath(Map<T, List<Edge<T>>> adjacencyList, T fromVertex, T toVertex);
