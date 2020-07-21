@@ -8,30 +8,35 @@ import com.defenox.graphlib.search.Search;
 import java.util.ArrayList;
 
 /**
+ * The class extents AbstractGraph class and implements Graph and UnweightedGraph interfaces and contains implementation of
+ * Search interface. A field Search initialize by Dijkstra object by default.
  *
- * @param <T>
+ * @param <T> type of vertex.
  */
 public class DirectedUnweightedGraph<T> extends AbstractGraph<T> implements UnweightedGraph<T> {
 
     /**
-     *
+     * Constructor init search by Dijkstra.
      */
     public DirectedUnweightedGraph() {
         super();
     }
 
     /**
+     * Constructor with param.
+     * @param search implementation of Search.
      *
-     * @param search
+     * @see Search
      */
     public DirectedUnweightedGraph(Search<T> search) {
         super(search);
     }
 
     /**
+     * Add directed weighted edge and set weight of edge as 1.0.
      *
-     * @param firstVertex
-     * @param secondVertex
+     * @param firstVertex first vertex.
+     * @param secondVertex second vertex.
      */
     @Override
     public void addEdge(T firstVertex, T secondVertex) {
