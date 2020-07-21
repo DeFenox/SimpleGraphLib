@@ -1,10 +1,10 @@
 package com.defenox.graphlib.search;
 
 import com.defenox.graphlib.common.Edge;
-import com.defenox.graphlib.directed.DirectedUnweightedGraph;
-import com.defenox.graphlib.directed.DirectedWeightedGraph;
-import com.defenox.graphlib.undirected.UndirectedUnweightedGraph;
-import com.defenox.graphlib.undirected.UndirectedWeightedGraph;
+import com.defenox.graphlib.graph.directed.DirectedUnweightedGraph;
+import com.defenox.graphlib.graph.directed.DirectedWeightedGraph;
+import com.defenox.graphlib.graph.undirected.UndirectedUnweightedGraph;
+import com.defenox.graphlib.graph.undirected.UndirectedWeightedGraph;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;

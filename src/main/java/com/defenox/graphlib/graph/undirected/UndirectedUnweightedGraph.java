@@ -1,4 +1,4 @@
-package com.defenox.graphlib.directed;
+package com.defenox.graphlib.graph.undirected;
 
 import com.defenox.graphlib.graph.AbstractGraph;
 import com.defenox.graphlib.common.Edge;
@@ -13,12 +13,12 @@ import java.util.ArrayList;
  *
  * @param <T> type of vertex.
  */
-public class DirectedUnweightedGraph<T> extends AbstractGraph<T> implements UnweightedGraph<T> {
+public class UndirectedUnweightedGraph<T> extends AbstractGraph<T> implements UnweightedGraph<T> {
 
     /**
      * Constructor init search by Dijkstra.
      */
-    public DirectedUnweightedGraph() {
+    public UndirectedUnweightedGraph() {
         super();
     }
 
@@ -28,12 +28,12 @@ public class DirectedUnweightedGraph<T> extends AbstractGraph<T> implements Unwe
      *
      * @see Search
      */
-    public DirectedUnweightedGraph(Search<T> search) {
+    public UndirectedUnweightedGraph(Search<T> search) {
         super(search);
     }
 
     /**
-     * Add directed weighted edge and set weight of edge as 1.0.
+     * Add undirected weighted edge and set weight of edge as 1.0.
      *
      * @param firstVertex first vertex.
      * @param secondVertex second vertex.
@@ -44,6 +44,7 @@ public class DirectedUnweightedGraph<T> extends AbstractGraph<T> implements Unwe
         adjacencyList.putIfAbsent(firstVertex, new ArrayList<>());
         adjacencyList.putIfAbsent(secondVertex, new ArrayList<>());
         adjacencyList.get(firstVertex).add(new Edge<>(firstVertex, secondVertex));
+        adjacencyList.get(secondVertex).add(new Edge<>(secondVertex, firstVertex));
         lock.unlock();
     }
 }
