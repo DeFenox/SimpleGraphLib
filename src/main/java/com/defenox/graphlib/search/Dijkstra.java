@@ -40,7 +40,7 @@ public class Dijkstra<T> implements Search<T> {
         predecessors = new HashMap<>();
         distance.put(source, 0.0);
         unSettledNodes.add(source);
-        while (unSettledNodes.size() > 0) {
+        while (unSettledNodes.isEmpty()) {
             T node = getMinimum(unSettledNodes);
             settledNodes.add(node);
             unSettledNodes.remove(node);
@@ -123,7 +123,6 @@ public class Dijkstra<T> implements Search<T> {
             T endVertex = step;
             step = predecessors.get(step);
             T startVertex = step;
-            //path.add(new Edge<>(startVertex, endVertex));
             path.add(getEdge(startVertex, endVertex));
         }
         // Put it into the correct order
